@@ -3,45 +3,42 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body align="center">
-    <h1>Welcome username: ${user}</h1>
-    <a href="logout">Log out</a>
-    <div>
-        <form action="search" method="GET">
-            <input type="text" name="pattern">
-            <input type="submit" value="Search">
-        </form>
+<body>
+<div class="container">
+    <div class="text-center">
+        <h1>Welcome : ${user}</h1>
+        <a href="logout">Log out</a>
     </div>
-    <div>
-        <table align="center">
-            <thead>
-            <tr>
-                <td width="300" height="80"><b>File</b></td>
-                <td width="300" height="80"><b>Name</b></td>
-                <td width="300" height="80"><b>Action</b></td>
-            </tr>
-            </thead>
-            <c:forEach items="${myfile}" var="file">
-                <tr>
-                    <td><a href="/image/${file.id}"><img src="/image/${file.id}" height="70" width="100" alt="picture"/></a></td>
-                    <td>${file.name}</td>
-                    <td>
-                        <a href="/delete?id=${file.id}">Delete</a><br>
-                        <a href="/download/${file.id}">Download</a>
-                    </td>
-                </tr>
-                <th>
-            </c:forEach>
-        </table>
+    <div class="row">
+        <div class="container col-xs-6">
+            <form action="add-file" enctype="multipart/form-data" method="POST">
+                Enter file name: <input type="text" name="name"/>
+                <input type="file" name="file"/>
+                <input type="submit" value="Add file">
+            </form>
+        </div>
+        <div class="container col-xs-6">
+            <form action="search" method="GET">
+                <input type="text" name="pattern">
+                <input type="submit" value="Search">
+            </form>
+        </div>
     </div>
-    <br>
-    <div>
-        <form action="add-file" enctype="multipart/form-data" method="POST">
-            Enter file name: <input type="text" name="name" />
-            <input type="file" name="file" /><br>
-            <input type="submit" value="Add file">
-        </form>
+</div>
+<div class="container text-center">
+    <div class="row">
+        <c:forEach items="${myfile}" var="file">
+            <div class="container-fluid col-md-3 col-sm-6 col-xs-12">
+                <a href="/image/${file.id}">
+                    <img src="/image/${file.id}" height="70" width="100" alt="picture"/></a><br>
+                    ${file.name}<br>
+                <a href="/delete?id=${file.id}">Delete</a><br>
+                <a href="/download/${file.id}">Download</a>
+            </div>
+        </c:forEach>
     </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,13 @@
+body {
+     background-color: lightgray;
+ }
+
+.mainblock {
+    margin-top: 100px;
+    width: 40%;
+    height: auto;
+    text-align: center;
+    background-color: white;
+    padding: 50px;
+    border-radius: 15px;
+}
