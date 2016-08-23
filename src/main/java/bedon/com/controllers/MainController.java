@@ -150,7 +150,7 @@ public class MainController {
             model.addAttribute("user", user.getLogin());
             return new ModelAndView("index", "myfile", myFileDAO.list(user));
         }
-        model.addAttribute("error", "Wrong login/password");
+        model.addAttribute("logError", "Wrong login/password");
         return new ModelAndView("login");
     }
 
