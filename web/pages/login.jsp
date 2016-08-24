@@ -34,12 +34,10 @@
                                              placeholder="Login"></label>
                     </div>
                     <div class="form-group">
-                        <label>Password: <input type="password" class="form-control" name="password"
-                                                placeholder="Password"></label>
+                        <label>Password: <input type="password" class="form-control" name="password" placeholder="Password"></label>
                     </div>
                     <div class="form-group">
-                        <label>Email: <input type="email" class="form-control" name="email"
-                                             placeholder="Email"></label>
+                        <label>Email: <input type="email" class="form-control" name="email" placeholder="Email"></label>
                     </div>
                     <button class="btn btn-primary" type="submit">Register</button>
                 </form>
@@ -51,8 +49,7 @@
             <div class="modal-header ">
                 <form action="" method="POST">
                     <div class="form-group">
-                        <label>Enter your email: <input type="email" class="form-control" name="email"
-                                                        placeholder="Email"></label>
+                        <label>Enter your email: <input type="email" class="form-control" name="email" placeholder="Email"></label>
                     </div>
                     <button class="btn btn-primary" type="submit">Send password</button>
                 </form>

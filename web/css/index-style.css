@@ -1,0 +1,50 @@
+body {
+    background-color: lightgray;
+}
+
+header {
+    background-color: grey;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    z-index: 100;
+}
+
+.search-small {
+    background-color: grey;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    padding: 10px 0px;
+    margin: 0px;
+}
+
+.user {
+    height: 100%;
+    text-align: left;
+}
+
+.sing-out-btn {
+    height: 100%;
+    text-align: right;
+
+}
+
+.search {
+    height: 100%;
+    text-align: center;
+}
+
+.main {
+    text-align: center;
+    width: 80%;
+}
+
+.content img {
+    width: 100%;
+    height: 200px;
+    margin: 5px 5px;
+}
+
+

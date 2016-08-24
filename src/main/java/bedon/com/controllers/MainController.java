@@ -51,7 +51,7 @@ public class MainController {
     }
 
     @RequestMapping("/image/{file_id}")
-    public void getFile(HttpServletRequest request, HttpServletResponse response, @PathVariable("file_id") int fileId) {
+    public void getFile(HttpServletResponse response, @PathVariable("file_id") int fileId) {
         try {
             MyFile file = myFileDAO.getFile(fileId);
 
@@ -62,6 +62,26 @@ public class MainController {
             FileInputStream in = new FileInputStream(f);
             in.read(fileBody);
 
+            response.getOutputStream().write(fileBody);
+
+            in.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/download/{file_id}")
+    public void downloadFile(HttpServletResponse response, @PathVariable("file_id") int fileId) {
+        try {
+            MyFile file = myFileDAO.getFile(fileId);
+
+            File f = new File(user.getPath() + "\\" +  file.getOriginalName());
+
+            byte[] fileBody = new byte[(int)f.length()];
+
+            FileInputStream in = new FileInputStream(f);
+            in.read(fileBody);
+            response.setHeader("Content-Disposition", "attachment; filename=" + file.getOriginalName());
             response.getOutputStream().write(fileBody);
 
             in.close();

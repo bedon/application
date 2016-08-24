@@ -4,41 +4,60 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        <%@include file='../css/index-style.css' %>
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="text-center">
-        <h1>Welcome : ${user}</h1>
-        <a href="logout">Log out</a>
-    </div>
-    <div class="row">
-        <div class="container col-xs-6">
-            <form action="add-file" enctype="multipart/form-data" method="POST">
-                Enter file name: <input type="text" name="name"/>
-                <input type="file" name="file"/>
-                <input type="submit" value="Add file">
-            </form>
-        </div>
-        <div class="container col-xs-6">
-            <form action="search" method="GET">
-                <input type="text" name="pattern">
-                <input type="submit" value="Search">
-            </form>
-        </div>
-    </div>
-</div>
-<div class="container text-center">
-    <div class="row">
-        <c:forEach items="${myfile}" var="file">
-            <div class="container-fluid col-md-3 col-sm-6 col-xs-12">
-                <a href="/image/${file.id}">
-                    <img src="/image/${file.id}" height="70" width="100" alt="picture"/></a><br>
-                    ${file.name}<br>
-                <a href="/delete?id=${file.id}">Delete</a><br>
-                <a href="/download/${file.id}">Download</a>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="user col-sm-10 col-md-3">
+                ${user}
             </div>
-        </c:forEach>
+            <div class="search col-sm-8 col-md-6 hidden-sm">
+                <form action="search" method="GET">
+                    <input type="text">
+                    <button class="" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="sign-out-btn col-sm-2 col-md-3">
+                <form action="logout">
+                    <button class="btn btn-primary">Sign out</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="search-small col-sm-12 visible-sm-block">
+                <form action="search" method="GET">
+                    <input type="text">
+                    <button class="" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container main">
+        <form action="add-file" class="form-inline" enctype="multipart/form-data" method="POST">
+            Enter file name: <input type="text" name="name" />
+            <input type="file" name="file" /><br>
+            <input type="submit" value="Add file">
+        </form>
+        <div class="row">
+            <c:forEach items="${myfile}" var="file">
+                <div class="container-fluid content col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                    <a href="/image/${file.id}">
+                        <img src="/image/${file.id}" alt="picture"/></a><br>
+                        ${file.name}<br>
+                    <a href="/delete?id=${file.id}">Delete</a><br>
+                    <a href="/download/${file.id}">Download</a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</main>
 </body>
 </html>
