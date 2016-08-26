@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="search-small col-sm-12 visible-sm-block">
                 <form action="search" method="GET">
