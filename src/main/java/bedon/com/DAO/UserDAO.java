@@ -7,4 +7,6 @@ public interface UserDAO {
     boolean checkUser(User user);
     boolean checkLogin(String userName);
     User getUser(String userName);
+    void sendEmail(User user);
+    User selectUserByEmail(String email);
 }

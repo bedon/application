@@ -1,5 +1,6 @@
 package bedon.com.DAO;
 
+import bedon.com.classes.EmailSender;
 import bedon.com.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,6 +11,21 @@ import java.util.List;
 public class UserDAOImpl implements UserDAO {
     @Autowired
     private EntityManager entityManager;
+
+    @Override
+    public void sendEmail(User user) {
+        String subject = "Your password";
+        String to = user.getEmail();
+        EmailSender.sendPassword(EmailSender.USER_NAME, EmailSender.PASSWORD, to, subject, user.getPassword());
+    }
+
+    @Override
+    public User selectUserByEmail(String email) {
+        Query query = entityManager.createQuery("select u from User u where u.email like :email");
+        query.setParameter("email", email);
+        User user = (User) query.getSingleResult();
+        return user;
+    }
 
     @Override
     public void addUser(User user) {

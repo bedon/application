@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -185,6 +186,21 @@ public class MainController {
         modelAndView.addObject("user", user.getLogin());
 
         return modelAndView;
+    }
+
+    @RequestMapping("send_email")
+    private String sendEmail(Model model,
+                             @RequestParam(value = "email") String email) {
+        try {
+            user = userDAO.selectUserByEmail(email);
+            userDAO.sendEmail(user);
+            user = new User();
+            model.addAttribute("passError", "Password send");
+            return "login";
+        } catch (NoResultException ex) {
+            model.addAttribute("passError", "Email not found");
+            return "login";
+        }
     }
 
     @RequestMapping(value = "/logout")

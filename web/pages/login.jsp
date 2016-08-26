@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container mainblock">
-    <h1>${logError} ${regError}</h1>
+    <h1>${logError} ${regError} ${passError}</h1>
     <form action="login" method="POST">
         <div class="form-group">
             <label for="login">Login</label>
@@ -47,7 +47,7 @@
     <div class="modal fade" id="password-window" role="dialog">
         <div class="modal-content modalblock">
             <div class="modal-header ">
-                <form action="" method="POST">
+                <form action="send_email" method="POST">
                     <div class="form-group">
                         <label>Enter your email: <input type="email" class="form-control" name="email" placeholder="Email"></label>
                     </div>
