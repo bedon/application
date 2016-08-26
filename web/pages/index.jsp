@@ -17,7 +17,7 @@
             </div>
             <div class="search col-sm-8 col-md-6 hidden-sm">
                 <form action="search" method="GET">
-                    <input type="text">
+                    <input type="text" name="pattern">
                     <button class="" type="submit">Search</button>
                 </form>
             </div>
@@ -40,12 +40,18 @@
     </div>
 </header>
 <main>
-    <div class="container main">
-        <form action="add-file" class="form-inline" enctype="multipart/form-data" method="POST">
-            Enter file name: <input type="text" name="name" />
-            <input type="file" name="file" /><br>
-            <input type="submit" value="Add file">
+    <div class="container text-center">
+        <form class="form-inline" action="add-file" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+                <label>Enter file name: <input type="text" name="name" /></label>
+            </div>
+            <div class="form-group">
+                <input type="file" name="file" />
+            </div>
+            <input class="btn btn-primary" type="submit" value="Add file">
         </form>
+    </div>
+    <div class="container main">
         <div class="row">
             <c:forEach items="${myfile}" var="file">
                 <div class="container-fluid content col-lg-2 col-md-3 col-sm-6 col-xs-12">
